@@ -35,12 +35,11 @@ const Dashboard = () => {
         <Header
           title="Your Files"
           setFiles={setFiles}
-          setLoading={setFilesLoading}
         />
       </div>
       <div className="grid grid-cols-5 gap-5">
         {filesLoading ? (
-          <div className="col-span-4 h-[calc(100vh-300px)] flex justify-center items-center">
+          <div className="col-span-5 flex justify-center items-center">
             <div className="loader"></div>
           </div>
         ) : files.length ? (
@@ -56,9 +55,9 @@ const Dashboard = () => {
             </React.Fragment>
           ))
         ) : (
-          <div className="col-span-4 h-[calc(100vh-300px)] flex justify-center items-center">
+          <div className="col-span-5 flex justify-center items-center">
             <img
-              className="w-[450px] h-auto rounded-full"
+              className="w-[400px]"
               src="/no-data.png"
               alt=" "
             />

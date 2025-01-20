@@ -35,7 +35,7 @@ const formSchema = z.object({
 const UploadFile = ({
   setFiles,
 }: {
-  setFiles: React.Dispatch<React.SetStateAction<FilesFavorite[] | []>>;
+  setFiles: any;
 }) => {
   const [open, setOpen] = useState<boolean>(false);
 
@@ -85,7 +85,7 @@ const UploadFile = ({
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button variant="outline" className="text-[15px]">
+        <Button variant="outline" className="text-[15px] shadow-md">
           <Upload width={18} className="mr-2" />
           Upload file
         </Button>
@@ -102,7 +102,7 @@ const UploadFile = ({
             <FormField
               control={form.control}
               name="file"
-              render={({ field }) => (
+              render={() => (
                 <FormItem>
                   <FormLabel>File</FormLabel>
                   <FormControl>
@@ -112,8 +112,9 @@ const UploadFile = ({
                 </FormItem>
               )}
             />
-            <Button type="submit" className="mt-4 w-full">
-              Upload
+            <Button disabled={form.formState.isSubmitting} type="submit" className="mt-4 w-full">
+              {form.formState.isSubmitting && <img className="mr-3" src="/3-dots-move-white.svg" alt="Loading..." />}
+              {!form.formState.isSubmitting && <span>Upload</span>}
             </Button>
           </form>
         </Form>
