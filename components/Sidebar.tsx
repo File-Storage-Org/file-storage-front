@@ -55,7 +55,7 @@ const Sidebar = () => {
   return (
     <div className="flex flex-col w-[300px] min-w-[300px] min-h-[calc(100vh-55px)] p-4">
       <div className="grow">
-        <Command>
+        <Command className="bg-[#f9fafe]">
           <CommandList>
             <CommandGroup heading="Menu">
               {menuItems.map((item) => (
@@ -64,8 +64,8 @@ const Sidebar = () => {
                   className={`
                     ${
                       item.text.toLowerCase() === activeItem
-                        ? "bg-accent text-accent-foreground text-orange-600"
-                        : "hover:bg-accent hover:text-accent-foreground"
+                        ? "bg-orange-100 text-accent-foreground text-orange-600"
+                        : "hover:bg-orange-100 hover:text-accent-foreground"
                     }
                     cursor-pointer text-md 
                   `}

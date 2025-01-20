@@ -21,9 +21,6 @@ import {
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { EllipsisVertical } from "lucide-react";
@@ -53,16 +50,16 @@ const FileCards = ({
 }) => {
   return (
     <>
-      <Card>
-        <CardHeader>
+      <Card className="h-full shadow-md">
+        <CardHeader className="pt-3 pb-0 px-5">
           <CardTitle className="flex justify-between items-center">
             <TooltipProvider>
               <Tooltip>
-                <TooltipTrigger className="text-xl cursor-default max-w-[calc(100%-50px)] overflow-hidden text-ellipsis whitespace-nowrap">
-                  {file?.name}
+                <TooltipTrigger className="text-lg font-normal cursor-default max-w-[calc(100%-50px)] overflow-hidden text-ellipsis whitespace-nowrap">
+                  {file?.name}{file?.format}
                 </TooltipTrigger>
                 <TooltipContent>
-                  <p>{file?.name}</p>
+                  <p>{file?.name}{file?.format}</p>
                 </TooltipContent>
               </Tooltip>
             </TooltipProvider>
@@ -92,35 +89,34 @@ const FileCards = ({
             </DropdownMenu>
           </CardTitle>
         </CardHeader>
-        <CardContent className="flex justify-center items-center h-full max-h-[120px]">
+        <CardContent className="flex justify-center items-center py-4">
           <Dialog>
             <DialogTrigger>
               <img
-                className="rounded-md max-w-full max-h-[120px]"
+                className="rounded-md max-w-full max-h-[80px]"
                 src={setImageByFormat(file)}
-                alt=""
+                alt="File"
               />
             </DialogTrigger>
-            <DialogContent className="p-0 max-w-[900px] max-h-[700px] flex justify-center items-center">
+            <DialogContent className="p-0">
               <img
-                className="rounded-md max-w-[900px] max-h-[700px]"
+                className="rounded-md"
                 src={setImageByFormat(file)}
-                alt=""
+                alt="File"
               />
             </DialogContent>
           </Dialog>
         </CardContent>
-        <CardFooter className="flex justify-between">
+        <CardFooter className="flex justify-between pb-3 px-5">
           <div className="flex items-center">
-            <Avatar className="w-8 h-8 mr-3">
+            <Avatar className="w-7 h-7 mr-3">
               <AvatarImage src="https://github.com/shadcn.png" />
               <AvatarFallback>
                 {user?.username?.at(0)?.toUpperCase()}
               </AvatarFallback>
             </Avatar>
-            <p>{user?.username}</p>
           </div>
-          <p className="text-sm text-zinc-500">
+          <p className="text-xs text-zinc-500">
             Uploaded {formatDate(file?.created_at)}
           </p>
         </CardFooter>
