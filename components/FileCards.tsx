@@ -39,6 +39,7 @@ const FileCards = ({
   fav,
   files,
   setFiles,
+  pageType = "",
 }: {
   user: User | null;
   file: File;
@@ -47,6 +48,7 @@ const FileCards = ({
   setFiles:
     | React.Dispatch<React.SetStateAction<FilesFavorite[] | []>>
     | React.Dispatch<React.SetStateAction<Files[] | []>>;
+  pageType?: string
 }) => {
   return (
     <>
@@ -80,6 +82,7 @@ const FileCards = ({
                       fav={fav}
                       files={files}
                       setFiles={setFiles}
+                      pageType={pageType}
                     />
                     <DropdownMenuSeparator />
                     <DeletedItem file={file} setFiles={setFiles} />

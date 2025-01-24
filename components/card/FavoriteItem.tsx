@@ -9,6 +9,7 @@ const FavoriteItem = ({
   fav,
   files,
   setFiles,
+  pageType = "",
 }: {
   file: File;
   fav?: boolean;
@@ -16,6 +17,7 @@ const FavoriteItem = ({
   setFiles:
     | React.Dispatch<React.SetStateAction<FilesFavorite[] | []>>
     | React.Dispatch<React.SetStateAction<Files[] | []>>;
+  pageType?: string
 }) => {
   const toggleFavorite = async () => {
     if (file) {
@@ -25,7 +27,7 @@ const FavoriteItem = ({
         });
         if (response.status === 200) {
           if (files && files.length && setFiles) {
-            if (fav) {
+            if (fav && pageType != "dashboard") {
               setFiles((prevState: any[]) =>
                 prevState.filter((el) => {
                   return el.data.id !== response.data.file_id;
@@ -35,7 +37,7 @@ const FavoriteItem = ({
               setFiles((prevState: any[]) =>
                 prevState.map((el) => {
                   if (el.data.id === response.data.file_id) {
-                    return { data: el.data, fav: response.data.id };
+                    return { data: el.data, fav: response.data.fav };
                   } else return el;
                 }),
               );

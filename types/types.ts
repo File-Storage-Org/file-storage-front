@@ -25,5 +25,5 @@ export interface Files {
 }
 
 export interface FilesFavorite extends Files {
-  fav: number | null;
+  fav: boolean;
 }

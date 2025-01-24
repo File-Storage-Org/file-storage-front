@@ -51,6 +51,7 @@ const Dashboard = () => {
                 fav={!!file.fav}
                 files={files}
                 setFiles={setFiles}
+                pageType="dashboard"
               />
             </React.Fragment>
           ))

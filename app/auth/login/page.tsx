@@ -60,7 +60,6 @@ const Login = () => {
         config,
       );
       if (response.status === 200) {
-        console.log(response.data);
         localStorage.setItem("access_token", response.data.access_token);
         login(response.data.user);
         router.push("/dashboard");
